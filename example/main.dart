@@ -28,15 +28,16 @@ class HomeScreen extends StatelessWidget {
             children: [
               ///
               /// Form Maker [FormElement.name] widget
-              /// 
+              ///
               FormElement.name(
                 onTap: () {
-                  print('Name');
+                  // Do something...
                 },
               ),
+
               ///
               /// Form Maker [FormElement.email] widget
-              /// 
+              ///
               FormElement.email(),
               FormElement.phone(),
               FormElement.address(),
