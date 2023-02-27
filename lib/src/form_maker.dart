@@ -996,6 +996,171 @@ class FormElement extends StatelessWidget {
   }
 
   ///
+  /// [website] is the factory constructor for website form field
+  ///
+  /// Website
+  ///
+  factory FormElement.website({
+    TextEditingController? controller,
+    Function(String)? onChanged,
+    bool? enable,
+    Function()? onTap,
+  }) {
+    return FormElement(
+      title: 'Website',
+      prefixText: '',
+      textInputType: TextInputType.url,
+      controller: controller ?? TextEditingController(),
+      onChanged: onChanged ?? (value) {},
+      enable: enable ?? true,
+      onTap: onTap ?? () {},
+      obscureText: false,
+    );
+  }
+
+  ///
+  /// [companyName] is the factory constructor for company name form field
+  ///
+  /// Company Name
+  ///
+  factory FormElement.companyName({
+    TextEditingController? controller,
+    Function(String)? onChanged,
+    bool? enable,
+    Function()? onTap,
+  }) {
+    return FormElement(
+      title: 'Company Name',
+      prefixText: '',
+      textInputType: TextInputType.name,
+      controller: controller ?? TextEditingController(),
+      onChanged: onChanged ?? (value) {},
+      enable: enable ?? true,
+      onTap: onTap ?? () {},
+      obscureText: false,
+    );
+  }
+
+  ///
+  /// [companyAddress] is the factory constructor for company address form field
+  ///
+  /// Company Address
+  ///
+  factory FormElement.companyAddress({
+    TextEditingController? controller,
+    Function(String)? onChanged,
+    bool? enable,
+    Function()? onTap,
+    int? maxLines,
+  }) {
+    return FormElement(
+      title: 'Company Address',
+      prefixText: '',
+      textInputType: TextInputType.streetAddress,
+      controller: controller ?? TextEditingController(),
+      onChanged: onChanged ?? (value) {},
+      enable: enable ?? true,
+      onTap: onTap ?? () {},
+      obscureText: false,
+      maxLines: maxLines ?? 3,
+    );
+  }
+
+  ///
+  /// [companyPhone] is the factory constructor for company phone form field
+  ///
+  /// Company Phone
+  ///
+  factory FormElement.companyNumber({
+    TextEditingController? controller,
+    Function(String)? onChanged,
+    bool? enable,
+    Function()? onTap,
+    String? prefixText,
+  }) {
+    return FormElement(
+      title: 'Company Phone',
+      prefixText: prefixText ?? '',
+      textInputType: TextInputType.phone,
+      controller: controller ?? TextEditingController(),
+      onChanged: onChanged ?? (value) {},
+      enable: enable ?? true,
+      onTap: onTap ?? () {},
+      obscureText: false,
+    );
+  }
+
+  ///
+  /// [companyFax] is the factory constructor for company fax form field
+  ///
+  /// Company Fax
+  ///
+  factory FormElement.companyFax({
+    TextEditingController? controller,
+    Function(String)? onChanged,
+    bool? enable,
+    Function()? onTap,
+    String? prefixText,
+  }) {
+    return FormElement(
+      title: 'Company Fax',
+      prefixText: prefixText ?? '',
+      textInputType: TextInputType.phone,
+      controller: controller ?? TextEditingController(),
+      onChanged: onChanged ?? (value) {},
+      enable: enable ?? true,
+      onTap: onTap ?? () {},
+      obscureText: false,
+    );
+  }
+
+  ///
+  /// [companyEmail] is the factory constructor for company email form field
+  ///
+  /// Company Email
+  ///
+  factory FormElement.companyEmail({
+    TextEditingController? controller,
+    Function(String)? onChanged,
+    bool? enable,
+    Function()? onTap,
+  }) {
+    return FormElement(
+      title: 'Company Email',
+      prefixText: '',
+      textInputType: TextInputType.emailAddress,
+      controller: controller ?? TextEditingController(),
+      onChanged: onChanged ?? (value) {},
+      enable: enable ?? true,
+      onTap: onTap ?? () {},
+      obscureText: false,
+    );
+  }
+
+  ///
+  /// [companyWebsite] is the factory constructor for company website form field
+  ///
+  /// Company Website
+  ///
+  factory FormElement.companyWebsite({
+    TextEditingController? controller,
+    Function(String)? onChanged,
+    bool? enable,
+    Function()? onTap,
+  }) {
+    return FormElement(
+      title: 'Company Website',
+      prefixText: '',
+      textInputType: TextInputType.url,
+      controller: controller ?? TextEditingController(),
+      onChanged: onChanged ?? (value) {},
+      enable: enable ?? true,
+      onTap: onTap ?? () {},
+      obscureText: false,
+    );
+  }
+
+  ///
   /// [custom] is the factory constructor for relation type form field
   ///
   /// Custom
