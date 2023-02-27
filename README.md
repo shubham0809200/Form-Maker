@@ -6,6 +6,18 @@ The Form Maker package is a convenient tool for developers to easily create form
 
 To use this package, add `form_maker` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
+```
+dependencies:
+
+  form_maker: latest verison
+```
+
+```dart
+// Import package
+import 'package:form_maker/form_maker.dart';
+
+```
+
 ## Example
 
 ```dart
@@ -149,4 +161,4 @@ Shubham Kumar - [Github](https://github.com/shubham0809200)
 | Package                                                             | Description                 |
 | ------------------------------------------------------------------- | --------------------------- |
 | [Dad Jokes](https://pub.dev/packages/dad_joke)                      | Get random dad jokes        |
-| [Timestamp to String](https://pub.dev/packages/timestamp_to_string) | Convert timestamp to string | 
+| [Timestamp to String](https://pub.dev/packages/timestamp_to_string) | Convert timestamp to string |
