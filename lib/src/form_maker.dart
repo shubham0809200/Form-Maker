@@ -176,8 +176,10 @@ class FormElement extends StatelessWidget {
                   ),
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
+
             /// set the [labelText] to [label] if it is not null
             labelText: label ?? 'Answer',
+
             /// set the [hintText] to [hint] if it is not null
             hintText: hint ?? 'Enter your Answer',
 
