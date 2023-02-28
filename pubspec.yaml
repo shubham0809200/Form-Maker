@@ -1,6 +1,6 @@
 name: form_maker
 description: The Form Maker package is a convenient tool for developers to easily create forms in their Flutter applications.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/shubham0809200/Form-Maker
 
 environment:

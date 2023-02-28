@@ -69,21 +69,28 @@ class HomeScreen extends StatelessWidget {
 
 ```
 
+## How to use
+
+To better understand how to use this package and create signup forms easily in Flutter, please visit the following blog: `https://medium.com/@i.shubham/create-signup-forms-in-flutter-with-form-maker-426c4ae6bff5`
+
 ## Parameters
 
-| Parameter       | Type                   | Description                                             |
-| :-------------- | :--------------------- | :------------------------------------------------------ |
-| 'title'         | String?                | The title of the form field                             |
-| 'prefixText'    | String?                | The prefix text of the form field                       |
-| 'textInputType' | TextInputType?         | The type of the form field                              |
-| 'controller'    | TextEditingController? | The controller of the form field                        |
-| 'onChanged'     | Function(String)?      | The callback function when the form field value changes |
-| 'label'         | String?                | The label of the form field                             |
-| 'hint'          | String?                | The hint of the form field                              |
-| 'enable'        | bool?                  | The enable state of the form field                      |
-| 'obscureText'   | bool?                  | The obscure text state of the form field                |
-| 'onTap'         | Function()?            | The callback function when the form field is tapped     |
-| 'maxLines'      | int?                   | The maximum number of lines of the form field           |
+| Parameter               | Type                   | Description                                             |
+| :---------------------- | :--------------------- | :------------------------------------------------------ |
+| 'title'                 | String?                | The title of the form field                             |
+| titleStyle              | TextStyle?             | The style of the title                                  |
+| 'prefixText'            | String?                | The prefix text of the form field                       |
+| 'textInputType'         | TextInputType?         | The type of the form field                              |
+| 'controller'            | TextEditingController? | The controller of the form field                        |
+| 'onChanged'             | Function(String)?      | The callback function when the form field value changes |
+| 'label'                 | String?                | The label of the form field                             |
+| 'hint'                  | String?                | The hint of the form field                              |
+| 'enable'                | bool?                  | The enable state of the form field                      |
+| 'disableTextFieldStyle' | TextStyle?             | The style of the disabled form field                    |
+| 'textFormFieldStyle'    | TextStyle?             | The style of the form field                             |
+| 'obscureText'           | bool?                  | The obscure text state of the form field                |
+| 'onTap'                 | Function()?            | The callback function when the form field is tapped     |
+| 'maxLines'              | int?                   | The maximum number of lines of the form field           |
 
 ## FormElement
 

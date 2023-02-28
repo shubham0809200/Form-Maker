@@ -7,6 +7,11 @@ class FormElement extends StatelessWidget {
   final String? title;
 
   ///
+  /// [titleStyle] is the style of the title of the form field
+  ///
+  final TextStyle? titleStyle;
+
+  ///
   /// [prefixText] is the prefix text of the form field
   ///
   final String? prefixText;
@@ -42,6 +47,16 @@ class FormElement extends StatelessWidget {
   final bool? enable;
 
   ///
+  /// [disableTextFieldStyle] is the style of the disable form field
+  ///
+  final TextStyle? disableTextFieldStyle;
+
+  ///
+  /// [textFormFieldStyle] is the style of the form field
+  ///
+  final TextStyle? textFormFieldStyle;
+
+  ///
   /// [obscureText] is the obscureText of the form field
   ///
   final bool? obscureText;
@@ -56,12 +71,10 @@ class FormElement extends StatelessWidget {
   ///
   final int? maxLines;
 
-  ///
-  /// [FormElement] is the form field widget
-  ///
   const FormElement({
     Key? key,
     this.title,
+    this.titleStyle,
     this.prefixText,
     this.textInputType,
     this.controller,
@@ -69,6 +82,8 @@ class FormElement extends StatelessWidget {
     this.label,
     this.hint,
     this.enable,
+    this.disableTextFieldStyle,
+    this.textFormFieldStyle,
     this.obscureText,
     this.maxLines,
     this.onTap,
@@ -94,7 +109,8 @@ class FormElement extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title!,
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style:
+                        titleStyle ?? Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
               ],
@@ -115,17 +131,54 @@ class FormElement extends StatelessWidget {
           controller: controller ?? TextEditingController(),
 
           /// set the [style] to [style] if it is not null
-          style: TextStyle(
-            fontSize: 14,
-            color: enable != null
-                ? enable == false
-                    ? Colors.grey
-                    : Colors.black
-                : Colors.black,
-          ),
+
+          style: enable != null
+
+              ///
+              /// check if the [enable] is false
+              ///
+              /// if the [enable] is false then set the [disableTextFieldStyle] to [disableTextFieldStyle] if it is not null
+              ? enable == false
+                  ? disableTextFieldStyle ??
+                      TextStyle(
+                        fontSize: 14,
+                        color: enable != null
+                            ? enable == false
+                                ? Colors.grey
+                                : Colors.black
+                            : Colors.black,
+                      )
+
+                  ///
+                  /// if the [enable] is true then set the [textFormFieldStyle] to [textFormFieldStyle] if it is not null
+                  ///
+                  : textFormFieldStyle ??
+                      TextStyle(
+                        fontSize: 14,
+                        color: enable != null
+                            ? enable == false
+                                ? Colors.grey
+                                : Colors.black
+                            : Colors.black,
+                      )
+
+              ///
+              /// if the [enable] is null then set the [textFormFieldStyle] to [textFormFieldStyle] if it is not null
+              ///
+              : textFormFieldStyle ??
+                  TextStyle(
+                    fontSize: 14,
+                    color: enable != null
+                        ? enable == false
+                            ? Colors.grey
+                            : Colors.black
+                        : Colors.black,
+                  ),
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
+            /// set the [labelText] to [label] if it is not null
             labelText: label ?? 'Answer',
+            /// set the [hintText] to [hint] if it is not null
             hintText: hint ?? 'Enter your Answer',
 
             /// set the [prefixText] to [prefixText] if it is not null
@@ -167,14 +220,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Email',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.emailAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -190,14 +249,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Verify Email',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.emailAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -214,14 +279,20 @@ class FormElement extends StatelessWidget {
     bool? enable,
     Function()? onTap,
     bool? obscureText,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Password',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.visiblePassword,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: obscureText ?? true,
     );
@@ -238,14 +309,20 @@ class FormElement extends StatelessWidget {
     bool? enable,
     Function()? onTap,
     bool? obscureText,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Confirm Password',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.visiblePassword,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: obscureText ?? false,
     );
@@ -261,14 +338,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -284,14 +367,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'First Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -307,14 +396,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Last Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -330,15 +425,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     String? prefixText,
   }) {
     return FormElement(
       title: 'Phone Number',
+      titleStyle: titleStyle,
       prefixText: prefixText ?? '',
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -354,15 +455,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     String? prefixText,
   }) {
     return FormElement(
       title: 'Fax',
+      titleStyle: titleStyle,
       prefixText: prefixText ?? '',
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -378,15 +485,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     String? prefixText,
   }) {
     return FormElement(
       title: 'Mobile',
+      titleStyle: titleStyle,
       prefixText: prefixText ?? '',
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -402,15 +515,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     String? prefixText,
   }) {
     return FormElement(
       title: 'Office Number',
+      titleStyle: titleStyle,
       prefixText: prefixText ?? '',
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -426,15 +545,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     int? maxLines,
   }) {
     return FormElement(
       title: 'Address',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.streetAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
       maxLines: maxLines ?? 3,
@@ -451,15 +576,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     int? maxLines,
   }) {
     return FormElement(
       title: 'Address 2',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.streetAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
       maxLines: maxLines ?? 3,
@@ -476,14 +607,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'City',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.text,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -499,14 +636,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'State',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.text,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -522,14 +665,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Zip Code',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.number,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -545,14 +694,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Pin Code',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.number,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -568,14 +723,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Country',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.text,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -591,14 +752,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Age',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.number,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -614,15 +781,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     bool? obscureText,
   }) {
     return FormElement(
       title: 'Date of Birth',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.datetime,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -638,14 +811,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Mother Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -661,14 +840,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Mother First Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -684,14 +869,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Mother Last Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -707,14 +898,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Father Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -730,14 +927,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Father First Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -753,14 +956,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Father Last Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -776,14 +985,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Spouse Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -799,14 +1014,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Spouse First Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -822,14 +1043,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Spouse Last Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -845,14 +1072,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Grand Father Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -868,14 +1101,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Grand Father First Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -891,14 +1130,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Grand Father Last Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -914,14 +1159,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Grand Mother Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -936,14 +1187,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Grand Mother First Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -959,14 +1216,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Grand Mother Last Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -982,14 +1245,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Relation',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -1005,14 +1274,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Website',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.url,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -1028,14 +1303,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Company Name',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -1051,15 +1332,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     int? maxLines,
   }) {
     return FormElement(
       title: 'Company Address',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.streetAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
       maxLines: maxLines ?? 3,
@@ -1076,15 +1363,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     String? prefixText,
   }) {
     return FormElement(
       title: 'Company Phone',
+      titleStyle: titleStyle,
       prefixText: prefixText ?? '',
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -1100,15 +1393,21 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     String? prefixText,
   }) {
     return FormElement(
       title: 'Company Fax',
+      titleStyle: titleStyle,
       prefixText: prefixText ?? '',
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -1124,14 +1423,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Company Email',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.emailAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -1147,14 +1452,20 @@ class FormElement extends StatelessWidget {
     Function(String)? onChanged,
     bool? enable,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
   }) {
     return FormElement(
       title: 'Company Website',
+      titleStyle: titleStyle,
       prefixText: '',
       textInputType: TextInputType.url,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: false,
     );
@@ -1176,15 +1487,21 @@ class FormElement extends StatelessWidget {
     bool? enable,
     bool? obscureText,
     Function()? onTap,
+    TextStyle? titleStyle,
+    TextStyle? disableTextFieldStyle,
+    TextStyle? textFormFieldStyle,
     int? maxLines,
   }) {
     return FormElement(
       title: title ?? '',
+      titleStyle: titleStyle,
       prefixText: prefixText ?? '',
       textInputType: textInputType ?? TextInputType.text,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
       enable: enable ?? true,
+      disableTextFieldStyle: disableTextFieldStyle,
+      textFormFieldStyle: textFormFieldStyle,
       onTap: onTap ?? () {},
       obscureText: obscureText ?? false,
       maxLines: maxLines ?? 1,
