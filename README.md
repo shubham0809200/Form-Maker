@@ -71,15 +71,18 @@ class HomeScreen extends StatelessWidget {
 
 ## How to use
 
-To better understand how to use this package and create signup forms easily in Flutter, please visit the following blog: `https://medium.com/@i.shubham/create-signup-forms-in-flutter-with-form-maker-426c4ae6bff5`
+To better understand how to use this package and create signup forms easily in Flutter, please visit the following blog: [Create Signup Forms in Flutter with Form Maker][1]
+
+[1]: https://medium.com/@i.shubham/create-signup-forms-in-flutter-with-form-maker-426c4ae6bff5
 
 ## Parameters
 
 | Parameter               | Type                   | Description                                             |
 | :---------------------- | :--------------------- | :------------------------------------------------------ |
 | 'title'                 | String?                | The title of the form field                             |
-| titleStyle              | TextStyle?             | The style of the title                                  |
-| 'prefixText'            | String?                | The prefix text of the form field                       |
+| 'titleStyle'            | TextStyle?             | The style of the title                                  |
+| 'prefix'                | Widget?                | The prefix widget of the form field                     |
+| 'suffix'                | Widget?                | The suffix widget of the form field                     |
 | 'textInputType'         | TextInputType?         | The type of the form field                              |
 | 'controller'            | TextEditingController? | The controller of the form field                        |
 | 'onChanged'             | Function(String)?      | The callback function when the form field value changes |
@@ -108,52 +111,52 @@ FormElement.name(
 
 ```
 
-| FormElement             | Description                        | Parameters                                                                                                   |
-| :---------------------- | :--------------------------------- | :----------------------------------------------------------------------------------------------------------- |
-| .email()                | Email form field                   | controller, onChanged , enable, onTap                                                                        |
-| .verifyEmail()          | Verify email form field            | controller, onChanged , enable, onTap                                                                        |
-| .password()             | Password form field                | controller, onChanged , enable, onTap, obscureText                                                           |
-| .confirmPassword()      | Confirm password field             | controller, onChanged , enable, onTap, obscureText                                                           |
-| .name()                 | Name form field                    | controller, onChanged , enable, onTap                                                                        |
-| .firstName()            | First name form field              | controller, onChanged , enable, onTap                                                                        |
-| .lastName()             | Last name form field               | controller, onChanged , enable, onTap                                                                        |
-| .phone()                | Phone form field                   | controller, onChanged , enable, onTap, prefixText                                                            |
-| .fax()                  | Fax form field                     | controller, onChanged , enable, onTap, prefixText                                                            |
-| .mobile()               | Mobile form field                  | controller, onChanged , enable, onTap, prefixText                                                            |
-| .officeNumber()         | Office number form field           | controller, onChanged , enable, onTap, prefixText                                                            |
-| .address()              | Address form field                 | controller, onChanged , enable, onTap, maxLines                                                              |
-| .addressTwo()           | Extra Address field for form       | controller, onChanged , enable, onTap, maxLines                                                              |
-| .city()                 | City form field                    | controller, onChanged , enable, onTap                                                                        |
-| .state()                | State form field                   | controller, onChanged , enable, onTap                                                                        |
-| .zip()                  | Zip form field                     | controller, onChanged , enable, onTap                                                                        |
-| .pincod()               | Pincode form field                 | controller, onChanged , enable, onTap                                                                        |
-| .country()              | Country form field                 | controller, onChanged , enable, onTap                                                                        |
-| .age()                  | Age form field                     | controller, onChanged , enable, onTap                                                                        |
-| .dob()                  | Date of birth form field           | controller, onChanged , enable, onTap                                                                        |
-| .motherName()           | Mother name form field             | controller, onChanged , enable, onTap                                                                        |
-| .motherFirstName()      | Mother first name form field       | controller, onChanged , enable, onTap                                                                        |
-| .motherLastName()       | Mother last name form field        | controller, onChanged , enable, onTap                                                                        |
-| .fatherName()           | Father name form field             | controller, onChanged , enable, onTap                                                                        |
-| .fatherFirstName()      | Father first name form field       | controller, onChanged , enable, onTap                                                                        |
-| .fatherLastName()       | Father last name form field        | controller, onChanged , enable, onTap                                                                        |
-| .spouseName()           | Spouse name form field             | controller, onChanged , enable, onTap                                                                        |
-| .spouseFirstName()      | Spouse first name form field       | controller, onChanged , enable, onTap                                                                        |
-| .spouceLastName()       | Spouse last name form field        | controller, onChanged , enable, onTap                                                                        |
-| .grandFatherName()      | Grand father name form field       | controller, onChanged , enable, onTap                                                                        |
-| .grandFatherFirstName() | Grand father first name form field | controller, onChanged , enable, onTap                                                                        |
-| .grandFatherLastName()  | Grand father last name form field  | controller, onChanged , enable, onTap                                                                        |
-| .grandMotherName()      | Grand mother name form field       | controller, onChanged , enable, onTap                                                                        |
-| .grandMotherFirstName() | Grand mother first name form field | controller, onChanged , enable, onTap                                                                        |
-| .grandMotherLastName()  | Grand mother last name form field  | controller, onChanged , enable, onTap                                                                        |
-| .relation()             | Relation form field                | controller, onChanged , enable, onTap                                                                        |
-| .website()              | Website form field                 | controller, onChanged , enable, onTap                                                                        |
-| .companyName()          | Company name form field            | controller, onChanged , enable, onTap                                                                        |
-| .companyAddress()       | Company address form field         | controller, onChanged , enable, onTap, maxLines                                                              |
-| .companyNumber()        | Company number form field          | controller, onChanged , enable, onTap, prefixText                                                            |
-| .companyFax()           | Company fax form field             | controller, onChanged , enable, onTap, prefixText                                                            |
-| .companyEmail()         | Company email form field           | controller, onChanged , enable, onTap                                                                        |
-| .companyWebsite()       | Company website form field         | controller, onChanged , enable, onTap                                                                        |
-| .custom()               | Custom form field                  | controller, onChanged , enable, onTap, label, hint, textInputType, title, prefixText, maxLines , obscureText |
+| FormElement             | Description                        | Parameters                                                                                                                                                                |
+| :---------------------- | :--------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| .email()                | Email form field                   | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .verifyEmail()          | Verify email form field            | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .password()             | Password form field                | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle, obscureText                                               |
+| .confirmPassword()      | Confirm password field             | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle, obscureText                                               |
+| .name()                 | Name form field                    | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .firstName()            | First name form field              | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .lastName()             | Last name form field               | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .phone()                | Phone form field                   | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .fax()                  | Fax form field                     | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .mobile()               | Mobile form field                  | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .officeNumber()         | Office number form field           | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .address()              | Address form field                 | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle, maxLines                                                  |
+| .addressTwo()           | Extra Address field for form       | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle, maxLines                                                  |
+| .city()                 | City form field                    | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .state()                | State form field                   | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .zip()                  | Zip form field                     | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .pincod()               | Pincode form field                 | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .country()              | Country form field                 | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .age()                  | Age form field                     | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .dob()                  | Date of birth form field           | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .motherName()           | Mother name form field             | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .motherFirstName()      | Mother first name form field       | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .motherLastName()       | Mother last name form field        | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .fatherName()           | Father name form field             | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .fatherFirstName()      | Father first name form field       | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .fatherLastName()       | Father last name form field        | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .spouseName()           | Spouse name form field             | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .spouseFirstName()      | Spouse first name form field       | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .spouceLastName()       | Spouse last name form field        | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .grandFatherName()      | Grand father name form field       | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .grandFatherFirstName() | Grand father first name form field | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .grandFatherLastName()  | Grand father last name form field  | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .grandMotherName()      | Grand mother name form field       | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .grandMotherFirstName() | Grand mother first name form field | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .grandMotherLastName()  | Grand mother last name form field  | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .relation()             | Relation form field                | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .website()              | Website form field                 | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .companyName()          | Company name form field            | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .companyAddress()       | Company address form field         | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle, maxLines                                                  |
+| .companyNumber()        | Company number form field          | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .companyFax()           | Company fax form field             | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .companyEmail()         | Company email form field           | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .companyWebsite()       | Company website form field         | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle                                                            |
+| .custom()               | Custom form field                  | controller, onChanged , enable, onTap, , titleStyle, prefix, suffix, disableTextFieldStyle, textFormFieldStyle, label, hint, textInputType, title, maxLines , obscureText |
 
 ## GitHub Repository
 

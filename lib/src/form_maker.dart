@@ -12,9 +12,14 @@ class FormElement extends StatelessWidget {
   final TextStyle? titleStyle;
 
   ///
-  /// [prefixText] is the prefix text of the form field
+  /// [prefix] is the prefix text of the form field
   ///
-  final String? prefixText;
+  final Widget? prefix;
+
+  ///
+  /// [suffix] is the suffix text of the form field
+  ///
+  final Widget? suffix;
 
   ///
   /// [textInputType] is the type of the form field
@@ -75,7 +80,8 @@ class FormElement extends StatelessWidget {
     Key? key,
     this.title,
     this.titleStyle,
-    this.prefixText,
+    this.prefix,
+    this.suffix,
     this.textInputType,
     this.controller,
     this.onChanged,
@@ -184,7 +190,10 @@ class FormElement extends StatelessWidget {
             hintText: hint ?? 'Enter your Answer',
 
             /// set the [prefixText] to [prefixText] if it is not null
-            prefixText: prefixText,
+            prefix: prefix ?? const SizedBox(),
+
+            /// set the [suffix] to [suffix] if it is not null
+            suffix: suffix ?? const SizedBox(),
           ),
 
           /// set the [textInputType] to [textInputType] if it is not null
@@ -225,11 +234,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Email',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.emailAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -254,11 +266,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Verify Email',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.emailAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -284,11 +299,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Password',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.visiblePassword,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -314,11 +332,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Confirm Password',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.visiblePassword,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -343,11 +364,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -372,11 +396,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'First Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -401,11 +428,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Last Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -430,12 +460,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
-    String? prefixText,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Phone Number',
       titleStyle: titleStyle,
-      prefixText: prefixText ?? '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -460,12 +492,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
-    String? prefixText,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Fax',
       titleStyle: titleStyle,
-      prefixText: prefixText ?? '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -490,12 +524,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
-    String? prefixText,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Mobile',
       titleStyle: titleStyle,
-      prefixText: prefixText ?? '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -520,12 +556,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
-    String? prefixText,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Office Number',
       titleStyle: titleStyle,
-      prefixText: prefixText ?? '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -551,11 +589,14 @@ class FormElement extends StatelessWidget {
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
     int? maxLines,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Address',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.streetAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -582,11 +623,14 @@ class FormElement extends StatelessWidget {
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
     int? maxLines,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Address 2',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.streetAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -612,11 +656,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'City',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.text,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -641,11 +688,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'State',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.text,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -670,11 +720,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Zip Code',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.number,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -699,11 +752,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Pin Code',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.number,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -728,11 +784,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Country',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.text,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -757,11 +816,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Age',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.number,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -787,11 +849,14 @@ class FormElement extends StatelessWidget {
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
     bool? obscureText,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Date of Birth',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.datetime,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -816,11 +881,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Mother Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -845,11 +913,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Mother First Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -874,11 +945,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Mother Last Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -903,11 +977,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Father Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -932,11 +1009,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Father First Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -961,11 +1041,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Father Last Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -990,11 +1073,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Spouse Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1019,11 +1105,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Spouse First Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1048,11 +1137,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Spouse Last Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1077,11 +1169,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Grand Father Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1106,11 +1201,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Grand Father First Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1135,11 +1233,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Grand Father Last Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1164,11 +1265,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Grand Mother Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1192,11 +1296,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Grand Mother First Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1221,11 +1328,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Grand Mother Last Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1250,11 +1360,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Relation',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1279,11 +1392,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Website',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.url,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1308,11 +1424,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Company Name',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.name,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1338,11 +1457,14 @@ class FormElement extends StatelessWidget {
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
     int? maxLines,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Company Address',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.streetAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1368,12 +1490,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
-    String? prefixText,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Company Phone',
       titleStyle: titleStyle,
-      prefixText: prefixText ?? '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1398,12 +1522,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
-    String? prefixText,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Company Fax',
       titleStyle: titleStyle,
-      prefixText: prefixText ?? '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.phone,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1428,11 +1554,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Company Email',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.emailAddress,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1457,11 +1586,14 @@ class FormElement extends StatelessWidget {
     TextStyle? titleStyle,
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: 'Company Website',
       titleStyle: titleStyle,
-      prefixText: '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: TextInputType.url,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
@@ -1480,7 +1612,6 @@ class FormElement extends StatelessWidget {
   ///
   factory FormElement.custom({
     String? title,
-    String? prefixText,
     TextInputType? textInputType,
     TextEditingController? controller,
     Function(String)? onChanged,
@@ -1493,11 +1624,14 @@ class FormElement extends StatelessWidget {
     TextStyle? disableTextFieldStyle,
     TextStyle? textFormFieldStyle,
     int? maxLines,
+    Widget? suffix,
+    Widget? prefix,
   }) {
     return FormElement(
       title: title ?? '',
       titleStyle: titleStyle,
-      prefixText: prefixText ?? '',
+      prefix: prefix,
+      suffix: suffix,
       textInputType: textInputType ?? TextInputType.text,
       controller: controller ?? TextEditingController(),
       onChanged: onChanged ?? (value) {},
